@@ -1,0 +1,129 @@
+<!--
+    POM (Project Object Model) failas aprašo Maven projekto konfigūraciją, įskaitant priklausomybes, pluginus ir kitus nustatymus.
+    Šis failas yra esminis kiekvieno Maven valdomo Java projekto komponentas.
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://www.w3.org/2001/04/xml-schema-instance">
+
+    <!-- Maven modelio versija, kurią naudoja šis POM failas -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Grupės identifikatorius (groupId) nurodo Maven projekto grupę -->
+    <groupId>com.example</groupId>
+
+    <!-- Artefakto identifikatorius (artifactId) nurodo Maven projekto artefakto pavadinimą -->
+    <artifactId>MusicAPI</artifactId>
+
+    <!-- Versija (version) nurodo Maven projekto versiją. Čia naudojama SNAPSHOT, kas reiškia, kad tai yra vystymosi versija. -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Pakavimo tipas (packaging) nurodo, kaip Maven turėtų supakuoti šį projektą. Šiuo atveju, tai yra jar (Java Archive). -->
+    <packaging>jar</packaging>
+
+    <!-- Parent (tėvinis) elementas nurodo, kad šis projektas paveldi nustatymus iš spring-boot-starter-parent projekto -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.4</version>
+        <relativePath/> <!-- Ieškoti tėvinio projekto iš atstovo -->
+    </parent>
+
+    <!-- Properties (savybės) elementas nurodo Maven projekto savybes, pvz., Java versiją ir bibliotekų versijas -->
+    <properties>
+        <java.version>11</java.version> <!-- Java versija -->
+        <springfox.version>3.0.0</springfox.version> <!-- Springfox versija -->
+        <junit.jupiter.version>5.7.2</junit.jupiter.version> <!-- JUnit Jupiter versija -->
+        <cucumber.version>7.1.0</cucumber.version> <!-- Cucumber versija -->
+    </properties>
+
+    <!-- Dependencies (priklausomybės) elementas nurodo, kokios bibliotekos yra reikalingos šiam projektui -->
+    <dependencies>
+        <!-- Springfox for Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Spring Boot Starters -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+        <!-- Cucumber -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Boot Starter Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Build (kompiliavimo) elementas nurodo, kaip Maven turėtų sukompiliuoti šį projektą -->
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin, naudojamas sukompiliuoti Spring Boot aplikaciją -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

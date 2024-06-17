@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Prisijungimo puslapis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/Image/background.jpg'); /* Pritaikykite kelią pagal poreikį */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+        }
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.8); /* Fono spalva su pusiau permatomu fonu */
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+        img.logo {
+            width: 300px;
+            margin-bottom: 40px;
+        }
+        input {
+            display: block;
+            margin: 20px auto;
+            padding: 20px;
+            width: calc(100% - 40px);
+            max-width: 600px;
+            box-sizing: border-box;
+            background-color: black;
+            color: white;
+            border: 2px solid lightblue;
+            border-radius: 8px;
+        }
+        button {
+            display: block;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background-color: black;
+            color: white;
+            border: 4px solid lightblue;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: lightblue;
+            color: white;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="/Image/logo.png" alt="Logotipas" class="logo" />
+    <h2>Prisijungimo forma</h2>
+    <div th:if="${error}" class="error" th:text="${error}"></div>
+    <form th:action="@{/login}" method="post">
+        <input type="text" name="username" placeholder="Vartotojo vardas" required />
+        <input type="password" name="password" placeholder="Slaptažodis" required />
+        <button type="submit">Patvirtinti</button>
+    </form>
+</div>
+</body>
+</html>
